@@ -9,9 +9,9 @@ class NoaaDataFetchJob < ApplicationJob
   def perform(zip_code)
     lat, long = convert_zip_code_to_lat_long_coordinates(zip_code)
     return "Invalid Zip Code" if lat == true
-    api_url = "https://api.weather.gov/points/#{lat.round(4)},#{long.round(4)}"
-
+    
     p "---------- FETCHING LOCATION FROM WEATHER.GOV ----------"
+    api_url = "https://api.weather.gov/points/#{lat.round(4)},#{long.round(4)}"
     response = Excon.get(api_url, retry_limit: 3, onnect_timeout: 10, read_timeout: 10)
     parsed_data = JSON.parse(response.body)
     
