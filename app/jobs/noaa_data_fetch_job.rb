@@ -7,7 +7,6 @@ class NoaaDataFetchJob < ApplicationJob
   queue_as :default
 
   def perform(zip_code)
-    binding.pry
     lat, long = convert_zip_code_to_lat_long_coordinates(zip_code)
     return "Invalid Zip Code" if lat == true
     api_url = "https://api.weather.gov/points/#{lat.round(4)},#{long.round(4)}"
