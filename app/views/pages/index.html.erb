@@ -1,0 +1,38 @@
+<div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalSheet">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header border-bottom-0">
+      </div>
+      <div class="modal-body py-0">
+        <%= form_with url: address_for_weather_path, method: :get, local: true do |form| %>
+          <div class="input-group input-group-lg mb-3">
+            <%= form.text_field :address, placeholder: "Enter Address", class: "form-control", required: true %>
+          </div>
+          
+          <div class="d-grid">
+            <%= form.submit "Get Weather", class: "btn btn-primary btn-lg" %>
+          </div>
+        <% end %>
+        <% if @weather_data.class == Array %>
+          <ul class="list-group list-group-flush">
+            <% @weather_data.each do |the_days_forecast| %>
+              <li class="list-group-item">
+                <h2 class="text-center"><%= the_days_forecast["name"] %></h2>
+                <%= image_tag the_days_forecast["icon"], class: "rounded float-end" %>
+                <p><strong>Temperature:</strong> <%= the_days_forecast["temperature"] %> °<%= the_days_forecast["temperatureUnit"] %></p>
+                <p><strong>Wind:</strong> <%= the_days_forecast["windSpeed"] %> <%= the_days_forecast["windDirection"] %></p>
+                <p><strong>Precipitation:</strong> <%= the_days_forecast["probabilityOfPrecipitation"]["value"] %> %</p>
+                <p><strong>Forecast:</strong> <%= the_days_forecast["detailedForecast"] %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p class="text-center pt-3"><%= @weather_data %></p>
+        <% end %>
+      </div>
+      <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+        <p class="text-center">😊 have fun 🏔️</small>
+      </div>
+    </div>
+  </div>
+</div>
