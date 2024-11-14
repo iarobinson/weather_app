@@ -1,24 +1,4 @@
-# README
+# [WEATHER APP](https://infinite-sea-13765-766a92be418d.herokuapp.com/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Click above to view this weather app deployed to Heroku.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
