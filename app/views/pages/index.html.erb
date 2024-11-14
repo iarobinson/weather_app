@@ -21,7 +21,7 @@
                 <%= image_tag the_days_forecast["icon"], class: "rounded float-end" %>
                 <p><strong>Temperature:</strong> <%= the_days_forecast["temperature"] %> °<%= the_days_forecast["temperatureUnit"] %></p>
                 <p><strong>Wind:</strong> <%= the_days_forecast["windSpeed"] %> <%= the_days_forecast["windDirection"] %></p>
-                <p><strong>Precipitation:</strong> <%= the_days_forecast["probabilityOfPrecipitation"]["value"] %> %</p>
+                <p><strong>Precipitation:</strong> <%= the_days_forecast["probabilityOfPrecipitation"]["value"] || "0" %>%</p>
                 <p><strong>Forecast:</strong> <%= the_days_forecast["detailedForecast"] %></p>
               </li>
             <% end %>
