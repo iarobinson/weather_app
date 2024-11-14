@@ -16,6 +16,8 @@ gem 'geocoder', '~> 1.8', '>= 1.8.3'
 gem 'excon'
 gem 'dotenv-rails'
 gem "redis", ">= 4.0.1"
+gem 'dalli'
+
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ], require: "debug/prelude"
