@@ -1,14 +1,13 @@
 class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   def index
-    zip_code = params[:address]
-    cached_data = Rails.cache.read("weather_data_#{zip_code}")
-  
+    user_input = params[:user_input]
+    cached_data = Rails.cache.read("weather_data_#{user_input}")
+    binding.pry
     if cached_data
       @weather_data = cached_data
     else
-      @weather_data = NoaaDataFetchJob.perform_now(zip_code)
-      Rails.cache.write("weather_data_#{zip_code}", @weather_data)
+      @weather_data = NoaaDataFetchJob.perform_now(user_input)
     end
     render 'pages/index'
   end
@@ -16,6 +15,6 @@ class ApplicationController < ActionController::Base
   private
 
     def weather_query_params
-      params.permit(:address)
+      params.permit(:user_input)
     end
 end

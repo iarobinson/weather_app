@@ -24,12 +24,13 @@ class NoaaDataFetchJob < ApplicationJob
   end
 
   def convert_user_input_to_lat_long(user_input)
-    binding.pry
     results = Geocoder.search(user_input).first
     if results.class == Geocoder::Result::Google
       return [results.latitude, results.longitude]
     else
+      p "---------- GEOCODER DID NOT PARSE STRING ----------"
       Rails.logger.error "Something went wrong with the Geocoding zip code conversion for #{user_input}"
+      [true]
     end
   end
 end

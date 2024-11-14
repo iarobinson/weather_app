@@ -6,7 +6,7 @@
       <div class="modal-body py-0">
         <%= form_with url: address_for_weather_path, method: :get, local: true do |form| %>
           <div class="input-group input-group-lg mb-3">
-            <%= form.text_field :address, placeholder: "Enter Address", class: "form-control", required: true %>
+            <%= form.text_field :user_input, placeholder: "Enter Address", class: "form-control", required: true %>
           </div>
           
           <div class="d-grid">
