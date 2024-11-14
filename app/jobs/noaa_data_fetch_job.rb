@@ -6,8 +6,8 @@ require 'excon'
 class NoaaDataFetchJob < ApplicationJob
   queue_as :default
 
-  def perform(zip_code)
-    lat, long = convert_zip_code_to_lat_long_coordinates(zip_code)
+  def perform(user_input)
+    lat, long = convert_user_input_to_lat_long(user_input)
     return "Invalid Zip Code" if lat == true
     
     p "---------- FETCHING LOCATION FROM WEATHER.GOV ----------"
@@ -23,12 +23,13 @@ class NoaaDataFetchJob < ApplicationJob
     parsed_zone_response_data["properties"]["periods"]
   end
 
-  def convert_zip_code_to_lat_long_coordinates(zip_code)
-    results = Geocoder.search(zip_code).first
+  def convert_user_input_to_lat_long(user_input)
+    binding.pry
+    results = Geocoder.search(user_input).first
     if results.class == Geocoder::Result::Google
       return [results.latitude, results.longitude]
     else
-      Rails.logger.error "Something went wrong with the Geocoding zip code conversion for #{zip_code}"
+      Rails.logger.error "Something went wrong with the Geocoding zip code conversion for #{user_input}"
     end
   end
 end
