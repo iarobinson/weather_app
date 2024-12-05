@@ -122,7 +122,7 @@ GEM
     ffi (1.17.0-aarch64-linux-gnu)
     ffi (1.17.0-arm64-darwin)
     ffi (1.17.0-x86_64-linux-gnu)
-    geocoder (1.8.3)
+    geocoder (1.8.4)
       base64 (>= 0.1.0)
       csv (>= 3.0.0)
     globalid (1.2.1)
@@ -338,7 +338,7 @@ DEPENDENCIES
   dotenv-rails
   error_highlight (>= 0.4.0)
   excon
-  geocoder (~> 1.8, >= 1.8.3)
+  geocoder (~> 1.8)
   importmap-rails
   jbuilder
   pg
