@@ -13,7 +13,7 @@ gem "bootstrap", "~> 5.2.1"
 gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "sassc-rails"
-gem 'geocoder', '~> 1.8', '>= 1.8.3'
+gem 'geocoder', '~> 1.8'
 gem 'excon'
 gem 'dotenv-rails'
 gem "redis", ">= 4.0.1"
